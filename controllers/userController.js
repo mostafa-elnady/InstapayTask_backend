@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 //get all users
 exports.getAllUsers = async (req, res, next) => {
   user.getAllUsers((err, users) => {
-    if (err) return res.status(500).json({ message: "Internal Server Error " });
+    if (err) return res.status(500).json({ message: "Internal Server Error ",error:err });
     res.status(200).json(users);
   });
 };
