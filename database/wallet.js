@@ -1,6 +1,19 @@
-
-
-
+//get all user Transaction
+const getTransactionsByUserId = (userId, callback) => {
+    const query = 'SELECT * FROM transactions WHERE sender_id = ? OR receiver_id = ?';
+    pool.query(query, [userId, userId], (error, results) => {
+      if (error) {
+        console.error('Error retrieving transactions:', error);
+        callback(error);
+      } else {
+        callback(null, results);
+      }
+    });
+  };
+  
+  module.exports = {
+    getTransactionsByUserId,
+  };
 
 // To get the list of previous transactions for a user, create a GET endpoint:
 
