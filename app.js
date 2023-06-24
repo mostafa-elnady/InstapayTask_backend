@@ -34,6 +34,6 @@ app.use("/users", userRouter);
 app.use("/wallets", walletRouter);
 
 const port = process.env.PORT;
-app.listen(port || 80, () => {
+app.listen(port || 5000, () => {
   console.log(`express app running on port ${port} successfully`);
 });

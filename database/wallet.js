@@ -2,19 +2,22 @@ const db = require("../database/db");
 
 //get all user Transaction
 const getWalletTransactionsByUserId = (userId, callback) => {
-  const query =
-    "SELECT * FROM wallet WHERE user_id_transfer = ? OR user_id_trensfered = ?";
-  db.query(query, [userId, userId], (error, results) => {
-    if (error) {
-      console.error("Error retrieving transactions:", error);
-      callback(error);
-    } else {
-      callback(null, results);
-    }
-  });
-};
-
-
+    const query = `
+    SELECT t.*, u1.firstName AS sender_name, u2.firstName AS receiver_name
+    FROM wallet t
+    JOIN users u1 ON t.user_id_transfer = u1.id
+    JOIN users u2 ON t.user_id_trensfered = u2.id
+    WHERE t.user_id_transfer = ? OR t.user_id_trensfered = ?
+  `;
+    db.query(query, [userId, userId], (error, results) => {
+      if (error) {
+        console.error("Error retrieving transactions:", error);
+        callback(error);
+      } else {
+        callback(null, results);
+      }
+    });
+  };
 // transfer money from one wallet to another
  const AddTransaction = (user_id_transfer, user_id_trensfered, money, callback) => {
     const query = 'INSERT INTO wallet (user_id_transfer, user_id_trensfered, money) VALUES (?, ?, ?)';
