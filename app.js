@@ -4,6 +4,7 @@ const cors = require("cors");
 require("dotenv/config");
 const bodyParser = require("body-parser");
 const userRouter = require("./routes/users.router");
+const walletRouter = require("./routes/wallet.router")
 const authJwt = require("./helpers/jwt");
 const errorHandler = require("./helpers/error-handler");
 
@@ -27,6 +28,7 @@ app.use(authJwt());
 app.use(errorHandler);
 //routes
 app.use("/users", userRouter);
+app.use("/wallets", walletRouter);
 
 const port = process.env.PORT;
 app.listen(port || 5000, () => {

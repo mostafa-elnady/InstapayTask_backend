@@ -9,6 +9,7 @@ const authJwt = () => {
   }).unless({
     path: [
       { url: /users(.*)/, methods: ["GET", "OPTIONS"] },
+      { url: /wallets(.*)/, methods: ["GET", "OPTIONS"] },
       `/users/login`,
       `/users/register`,
     ],
