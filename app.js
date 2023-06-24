@@ -14,7 +14,7 @@ const app = express();
 app.use(cors());
 app.options("*", cors);
 app.use(cors({
-  origin: 'https://node-mysql-api-m2jd.onrender.com/'
+  origin: 'http://localhost:3000'
 }));
 
 // middleware to Parse incoming request

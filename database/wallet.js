@@ -1,22 +1,24 @@
+const db = require("../database/db");
+
 //get all user Transaction
-const getTransactionsByUserId = (userId, callback) => {
-    const query = 'SELECT * FROM transactions WHERE sender_id = ? OR receiver_id = ?';
-    pool.query(query, [userId, userId], (error, results) => {
-      if (error) {
-        console.error('Error retrieving transactions:', error);
-        callback(error);
-      } else {
-        callback(null, results);
-      }
-    });
-  };
-  
-  module.exports = {
-    getTransactionsByUserId,
-  };
+const getWalletTransactionsByUserId = (userId, callback) => {
+  const query =
+    "SELECT * FROM wallet WHERE user_id_transfer = ? OR user_id_trensfered = ?";
+  db.query(query, [userId, userId], (error, results) => {
+    if (error) {
+      console.error("Error retrieving transactions:", error);
+      callback(error);
+    } else {
+      callback(null, results);
+    }
+  });
+};
+
+module.exports = {
+  getWalletTransactionsByUserId,
+};
 
 // To get the list of previous transactions for a user, create a GET endpoint:
-
 
 // app.get('/users/:userId/transactions', (req, res) => {
 //     const userId = req.params.userId;
@@ -30,8 +32,6 @@ const getTransactionsByUserId = (userId, callback) => {
 //       }
 //     });
 //   });
-  
-
 
 // To transfer money from one wallet to another, create a POST endpoint:
 // app.post('/transactions', (req, res) => {

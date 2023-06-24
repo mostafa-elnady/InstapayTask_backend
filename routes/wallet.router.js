@@ -4,7 +4,7 @@ const walletController = require('../controllers/walletController')
 
 
 //get All Transaction of user
-router.get("/", walletController.getAllUserTransaction);
+router.get("/:userId", walletController.getAllUserTransaction);
 
 
 
