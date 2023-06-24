@@ -37,7 +37,7 @@ exports.register = async (req, res, next) => {
         res.status(400).json({ error: "Email already exists" });
       } else {
         console.error(err);
-        res.status(500).json({ error: "Failed to register user" });
+        res.status(500).json({ error: "Failed to register user" },err);
       }
     } else {
       res.status(200).json({ message: "User registered successfully" });
