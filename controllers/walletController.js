@@ -25,7 +25,7 @@ exports.addtransaction = async (req, res, next) => {
         console.error("Error creating transaction:", error);
         res.status(500).json({ error: "An error occurred" });
       } else {
-        res.json({ message: "Transaction created successfully", results });
+        res.json({ message: "Transaction created successfully" });
       }
     }
   );
