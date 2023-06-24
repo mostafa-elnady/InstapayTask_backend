@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 // jwt
-app.use(authJwt());
+// app.use(authJwt());
 
 // error handlers
 app.use(errorHandler);
