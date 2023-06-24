@@ -16,7 +16,7 @@ exports.getAllUserTransaction = async (req, res, next) => {
 // transfer money from one wallet to another
 exports.addtransaction = async (req, res, next) => {
   const { user_id_transfer, user_id_trensfered, money } = req.body;
-  database.createTransaction(
+  wallet.AddTransaction(
     user_id_transfer,
     user_id_trensfered,
     money,

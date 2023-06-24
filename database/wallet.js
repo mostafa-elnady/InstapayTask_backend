@@ -18,7 +18,7 @@ const getWalletTransactionsByUserId = (userId, callback) => {
 // transfer money from one wallet to another
  const AddTransaction = (user_id_transfer, user_id_trensfered, money, callback) => {
     const query = 'INSERT INTO wallet (user_id_transfer, user_id_trensfered, money) VALUES (?, ?, ?)';
-    pool.query(query, [user_id_transfer, user_id_trensfered, money], (error, results) => {
+    db.query(query, [user_id_transfer, user_id_trensfered, money], (error, results) => {
       if (error) {
         console.error('Error creating transaction:', error);
         callback(error);
