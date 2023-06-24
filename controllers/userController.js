@@ -60,7 +60,7 @@ exports.login = async (req, res, next) => {
       res.status(404).json({ error: "User not found" });
     } else if (err === "Invalid password") {
       res.status(401).json({ error: "Invalid password" });
-    } else if (err) {
+    } else if (err) { 
       console.error(err);
       res.status(500).json({ error: "Failed to login" });
     } else {
@@ -76,7 +76,7 @@ exports.login = async (req, res, next) => {
       console.log(typeof user);
       res
         .status(200)
-        .json({ message: "Login successful", user: { ...user, token } });
+        .send( { ...user, token } );
     }
   });
 };
