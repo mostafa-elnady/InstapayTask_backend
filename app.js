@@ -11,11 +11,17 @@ const errorHandler = require("./helpers/error-handler");
 const app = express();
 
 // CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
-app.use(cors({
-  credentials:true,
-}));
-app.options("*", cors);
-
+// app.use(cors({
+//   credentials:true,
+// }));
+// app.options("*", cors);
+  // Cors
+  const corsOptions = {
+    origin: '*',
+    credentials: true,
+    optionSuccessStatus: 200
+  }
+  app.use(cors(corsOptions))
 
 // middleware to Parse incoming request
 app.use(bodyParser.json());
