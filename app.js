@@ -12,10 +12,8 @@ const app = express();
 
 // CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
 app.use(cors());
-// app.options("*", cors);
-// app.use(cors({
-//   origin: 'http://localhost:5000'
-// }));
+app.options("*", cors);
+
 
 // middleware to Parse incoming request
 app.use(bodyParser.json());
